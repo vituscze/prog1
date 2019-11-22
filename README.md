@@ -13,6 +13,11 @@ Cvičení je každý týden ve čtvrtek 14:00 v místnosti SU2 (Malá Strana, p�
 * [ReCodEx kuchařka pro nové uživatele](http://www.ms.mff.cuni.cz/ReCodEx/NewUserDoc.pdf)
 * [ReCodEx kuchařka pro studenty](http://www.ms.mff.cuni.cz/ReCodEx/StudentDoc.pdf)
 
+# Příklady na procvičení
+
+* [Project Euler](https://projecteuler.net/)
+* [LeetCode](https://leetcode.com/)
+
 # Zápočtové programy
 
 Do konce roku se se mnou domluvte na tématu zápočtového programu. Pro inspiraci můžete použít následující linky:
