@@ -18,6 +18,11 @@ Cvičení je každý týden ve čtvrtek 14:00 v místnosti SU2 (Malá Strana, p�
 * [Project Euler](https://projecteuler.net/)
 * [LeetCode](https://leetcode.com/)
 
+# Zápočtový test
+
+Zápočtový test proběhne na posledním cvičení (9.1.). Opravné termíny budou
+k dispozici během zkouškového období.
+
 # Zápočtové programy
 
 Do konce roku se se mnou domluvte na tématu zápočtového programu. Pro inspiraci můžete použít následující linky:
@@ -34,5 +39,6 @@ Případně si můžeme vymyslet téma vlastní. Součástí zápočtového prog
 * **Uživatelská dokumentace** - jak se s vaším programem pracuje
 * **Programátorská dokumentace** - jak váš program funguje
 
-Zápočtový program mi pošlete mailem a pokud bude vše v pořádku, tak se domluvíme na
-osobní prezentaci (obvykle v labu na Malé Straně).
+Zápočtový program mi pošlete mailem (vituscze *at* gmail *dot* com) a pokud
+bude vše v pořádku, tak se domluvíme na osobní prezentaci (obvykle v labu na
+Malé Straně).
