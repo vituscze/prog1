@@ -1,6 +1,6 @@
-# Cvičení z Programování I (NPRG030)
+# Cvičení z Programování I (NPRG030) a Algoritmizace (NPRG062)
 
-Cvičení je každý týden ve čtvrtek 14:00 v místnosti SU2 (Malá Strana, přízemí).
+Cvičení jsou každý týden v pondělí (15:40) a ve čtvrtek (14:00).
 
 # Užitečné linky
 
@@ -18,10 +18,17 @@ Cvičení je každý týden ve čtvrtek 14:00 v místnosti SU2 (Malá Strana, p�
 * [Project Euler](https://projecteuler.net/)
 * [LeetCode](https://leetcode.com/)
 
+# Zápočet
+
+Pro zápočet z Algoritmizace je zapotřebí mít dostatek bodů z domácích úloh. Pro zápočet z Programování I je zapotřebí mít dostatek bodů z domácích úloh, úspěšně absolvovat zápočtový test a odevzdat a odprezentovat zápočtový program.
+
+# Domácí úlohy
+
+Všechny úlohy se odezvdávají přes ReCodEx (link viz výše). Pro Algoritmizaci i Programování I je zapotřebí mít alespoň 60% bodů.
+
 # Zápočtový test
 
-Zápočtový test proběhne na posledním cvičení (9.1.). Opravné termíny budou
-k dispozici během zkouškového období.
+Zápočtový test proběhne na posledním cvičení. Opravné termíny budou k dispozici během zkouškového období.
 
 # Zápočtové programy
 
