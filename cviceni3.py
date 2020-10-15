@@ -1,52 +1,56 @@
-def isSortedAsc(x):
-    for i in range(len(x) - 1):
-        if x[i] > x[i + 1]:
+def sieve(n):
+    if n < 2:
+        return []
+
+    size = (n - 3) // 2 + 1
+    candidates = size * [True]
+    result = [2]
+    for i in range(size):
+        if candidates[i]:
+            prime = 3 + 2 * i
+            # print('### prime', prime)
+            start = (prime * prime - 3) // 2
+            result.append(prime)
+            for j in range(start, size, 2 * prime // 2):
+                # print('crossing out', 3 + 2 * j)
+                candidates[j] = False
+    return result
+
+# ----------
+
+def getInput(r):
+    r = min(3, r)
+    while True:
+        i = int(input('Enter a number between 1 and ' + str(r) + ': '))
+        if i >= 1 and i <= r:
+            return i
+
+def nextPlayer(p):
+    if p == 'A':
+        return 'B'
+    else:
+        return 'A'
+
+def printGameState(p, r):
+    print('---')
+    print('Player ', p, "'s turn", sep='')
+    print(r, 'remaining coins')
+
+rem = 15
+player = 'A'
+
+while rem > 0:
+    printGameState(player, rem)
+    rem -= getInput(rem)
+    if rem == 0:
+        print('Player', player, 'won!')
+    else:
+        player = nextPlayer(player)
+
+# ----------
+
+def palindrom(s):
+    for i in range(len(s) // 2):
+        if s[i] != s[-1 - i]:
             return False
     return True
-
-def isSortedDesc(x):
-    for i in range(len(x) - 1):
-        if x[i] < x[i + 1]:
-            return False
-    return True
-
-def isSortedBoth(x):
-    asc, desc = True, True
-    for i in range(len(x) - 1):
-        if x[i] < x[i + 1]:
-            desc = False
-        elif x[i] > x[i + 1]:
-            asc = False
-    return asc, desc
-
-def isSorted(x):
-    asc, desc = isSortedBoth(x)
-    return asc or desc
-
-def revRange(l, begin, end):
-    for i in range((end - begin) // 2):
-        l[begin + i], l[end - i - 1] = l[end - i - 1], l[begin + i]
-
-def shift(x, n):
-    r = []
-    for i in range(len(x)):
-        r.append(x[(i + n) % len(x)])
-    return r
-
-def shiftInplace(x):
-    if len(x) <= 1:
-        return
-
-    tmp = x[0]
-    for i in range(len(x) - 1):
-        x[i] = x[i + 1]
-    x[-1] = tmp
-
-def shiftClever(l, n):
-    if len(l) <= 1:
-        return
-
-    mid = -n % len(l)
-    revRange(l, 0, len(l))
-    revRange(l, 0, mid)
-    revRange(l, mid, len(l))
