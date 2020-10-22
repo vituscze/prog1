@@ -1,59 +1,50 @@
-def gcd(a, b):
-    while b > 0:
-        a, b = b, a % b
-    return a
+def shift(x, n):
+    result = []
+    for i in range(len(x)):
+        result.append(x[(i + n) % len(x)])
+    return result
 
-def shiftInplace(l, n):
-    if len(l) <= 1:
+def shiftInPlace(x):
+    if len(x) <= 1:
         return
 
-    length = len(l)
+    tmp = x[0]
+    for i in range(len(x) - 1):
+        x[i] = x[i + 1]
+    x[-1] = tmp
+
+def gcd(a, b):
+    while b > 0:
+        a, b = b , a % b
+    return a
+
+def shiftInPlaceComplex(x, n):
+    if len(x) <= 1:
+        return
+
+    length = len(x)
     n = n % length
 
     cycleCount = gcd(length, n)
     cycleLength = length // cycleCount
 
     for i in range(cycleCount):
-        tmp = l[i]
+        tmp = x[i]
         ix = i
         for j in range(cycleLength - 1):
-            l[ix % length] = l[(ix + n) % length]
+            x[ix % length] = x[(ix + n) % length]
             ix += n
-        l[ix % length] = tmp
+        x[ix % length] = tmp
 
-def split(str):
-    res = []
-    cur = ''
-    for x in str + ' ':
-        if x == ' ':
-            if cur != '':
-                res.append(cur)
-                cur = ''
-        else:
-            cur = cur + x
-    return res
+def revRange(x, begin, end):
+    for i in range((end - begin) // 2):
+        x[begin + i], x[end - i - 1] = x[end - i - 1], x[begin + i]
 
-def readRow():
-    res = []
-    s = split(input())
-    for x in s:
-        res.append(int(x))
-    return res
+def shiftInPlaceClever(x, n):
+    if len(x) <= 1:
+        return
 
-def readMatrix():
-    res = []
-    rows = int(input())
-    for i in range(rows):
-        res.append(loadRow())
-    return res
-
-def isSymmetric(matrix):
-    rows = len(matrix)
-    cols = len(matrix[0])
-    if rows != cols:
-        return False
-    for i in range(rows):
-        for j in range(cols):
-            if matrix[i][j] != matrix[j][i]:
-                return False
-    return True
+    mid = -n % len(x)
+    revRange(x, 0, len(x))
+    revRange(x, 0, mid)
+    revRange(x, mid, len(x))
