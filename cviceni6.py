@@ -1,64 +1,90 @@
-def createHistogram(str):
-    hist = {}
-    for s in str:
-        if s in hist:
-            hist[s] += 1
+def merge(source, target, beginFst, endFst, beginSnd, endSnd, beginTgt):
+    fst, snd, tgt = beginFst, beginSnd, beginTgt
+
+    while fst < endFst and snd < endSnd:
+        if source[fst] < source[snd]:
+            target[tgt] = source[fst]
+            fst, tgt = fst + 1, tgt + 1
         else:
-            hist[s] = 1
-    return hist
+            target[tgt] = source[snd]
+            snd, tgt = snd + 1, tgt + 1
 
-def printHistogram(histo, n = 10):
-    max = 0
-    for v in histo.values():
-        if v > max:
-            max = v
-    for k, v in histo.items():
-        stars = n * v // max
-        print(k + ':', '*' * stars)
+    while fst < endFst:
+        target[tgt] = source[fst]
+        fst, tgt = fst + 1, tgt + 1
 
-def fac(n):
-    if n <= 0:
-        return 1
-    else:
-        return n * fac(n - 1)
+    while snd < endSnd:
+        target[tgt] = source[snd]
+        snd, tgt = snd + 1, tgt + 1
 
-def fib(n):
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        return fib(n - 1) + fib(n - 2)
+def mergesort(array):
+    length = len(array)
+    
+    runLength = 1
+    swap = False
+    while runLength < length:
+        swap = not swap
+        runLength *= 2
 
-mem = {}
-def fibMem(n):
-    if n in mem:
-        return mem[n]
+    src, tgt = array, array.copy()
+    if swap:
+        src, tgt = tgt, src
 
-    r = None
-    if n <= 0:
-        r = 0
-    elif n == 1:
-        r = 1
-    else:
-        r = fibMem(n - 1) + fibMem(n - 2)
+    runLength = 1
+    while runLength < length:
+        for begin in range(0, length, 2 * runLength):
+            mid = min(begin + runLength, length)
+            end = min(begin + 2 * runLength, length)
+            merge(src, tgt, begin, mid, mid, end, begin)
+        src, tgt = tgt, src
+        runLength *= 2
 
-    mem[n] = r
-    return r
+##########
 
-def binarySearch(what, l, begin, end):
-    if begin >= end:
-        return None
-    elif end - begin == 1:
-        if l[begin] == what:
-            return begin
+def id(x):
+    return x
+
+def countingSort(array, key, rangeFrom, rangeTo):
+    rangeLen = rangeTo - rangeFrom
+    counts = rangeLen * [0]
+    for x in array:
+        counts[key(x) - rangeFrom] += 1
+
+    cumulative = 0
+    for i in range(rangeLen):
+        counts[i], cumulative = cumulative, counts[i] + cumulative
+
+    result = [None] * len(array)
+    for x in array:
+        ix = key(x) - rangeFrom
+        result[counts[ix]] = x
+        counts[ix] += 1
+    return result
+
+##########
+
+class Node:
+    def __init__(self, value, next = None):
+        self.value = value
+        self.next = next
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def addFront(self, value):
+        self.head = Node(value, self.head)
+
+    def removeFront(self):
+        if self.head != None:
+            self.head = self.head.next
+
+    def valueAt(self, index):
+        cur = self.head
+        while cur != None and index > 0:
+            cur = cur.next
+            index -= 1
+        if cur != None:
+            return cur.value
         else:
             return None
-    else:
-        mid = begin + (end - begin) // 2
-        if l[mid] < what:
-            return binarySearch(what, l, mid + 1, end)
-        elif l[mid] == what:
-            return mid
-        else:
-            return binarySearch(what, l, begin, mid)
