@@ -24,7 +24,7 @@ def printTreePretty(root):
 
         if node.left != None:
             print(prefix + '|')
-            go(node.left, prefix + '|   ')
+            go(node.left, prefix + '|   ' if node.right != None else prefix + '    ')
 
         if node.right != None:
             print(prefix + '|')
