@@ -1,6 +1,6 @@
 # Cvičení z Programování I (NPRG030) a Algoritmizace (NPRG062)
 
-Cvičení jsou každý týden v pondělí (15:40) a ve čtvrtek (14:00).
+Cvičení jsou každý týden v pondělí (13:10) a v pátek (9:00).
 
 # Užitečné linky
 
@@ -47,5 +47,5 @@ Případně si můžeme vymyslet téma vlastní. Součástí zápočtového prog
 * **Programátorská dokumentace** - jak váš program funguje
 
 Zápočtový program mi pošlete mailem (vituscze *at* gmail *dot* com) a pokud
-bude vše v pořádku, tak se domluvíme na osobní prezentaci (obvykle v labu na
+bude vše v pořádku, tak se domluvíme na prezentaci (přes Zoom nebo osobně v labu na
 Malé Straně).
