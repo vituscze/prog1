@@ -1,3 +1,9 @@
+# Algoritmizace: Vážení N kuliček
+# * Nalezení nejtěžší kuličky pomocí N - 1 zvážení (formální důkaz správnosti a optimality)
+# * Nalezení nejtěžší a nejlehčí kuličky pomocí 3/2 N - 2 zvážení
+# * Nalezení dvou nejtěžších kuliček pomocí N + log N - 2 zvážení (turnajový postup)
+# * Nalezení jedné odlišné kuličky pomocí log N zvážení
+
 import random
 
 rnd = random.randint(1, 100)
