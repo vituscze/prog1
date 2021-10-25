@@ -1,3 +1,33 @@
+def sieve(n):
+    if n < 2:
+        return []
+
+    def indexToValue(ix):
+        return ix * 2 + 3
+
+    def valueToIndex(val):
+        return (val - 3) // 2
+
+    lastIx = valueToIndex(n)
+    size = lastIx + 1
+    candidates = [True] * size
+    
+    for i in range(size):
+        value = indexToValue(i)
+        if value * value > n:
+            break
+        start = valueToIndex(value * value)
+        for j in range(start, size, value):
+            candidates[j] = False
+
+    result = [2]
+    for i in range(size):
+        if candidates[i]:
+            result.append(indexToValue(i))
+    return result
+
+# ----------
+
 def shift(x, n):
     result = []
     for i in range(len(x)):
