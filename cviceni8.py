@@ -1,174 +1,134 @@
-class DoubleNode:
-    def __init__(self, value, prev = None, next = None):
-        self.value = value
-        self.prev = prev
-        self.next = next
+import random
 
-class DoublyLinkedList:
-    def __init__(self):
-        self.head = None
-        self.tail = None
-        
-    def link(self, prev, next, node):
-        node.prev = prev
-        node.next = next
+def generate(toOpen, toClose=0, str=''):
+    if toOpen == 0 and toClose == 0:
+        print(str)
+    if toOpen > 0:
+        generate(toOpen - 1, toClose + 1, str + '(')
+    if toClose > 0:
+        generate(toOpen, toClose - 1, str + ')')
 
-        if prev != None:
-            prev.next = node
-        else:
-            self.head = node
-
-        if next != None:
-            next.prev = node
-        else:
-            self.tail = node
-
-    def linkAfter(self, prev, node):
-        self.link(prev, self.head if prev == None else prev.next, node)
-
-    def linkBefore(self, next, node):
-        self.link(self.tail if next == None else next.prev, next, node)
-
-    def unlink(self, node):
-        prev = node.prev
-        next = node.next
-
-        node.prev = None
-        node.next = None
-
-        if prev != None:
-            prev.next = next
-        else:
-            self.head = next
-
-        if next != None:
-            next.prev = prev
-        else:
-            self.tail = prev
-
-    def unlinkHead(self):
-        node = self.head
-        if node != None:
-            self.unlink(node)
-        return node
-
-    def unlinkTail(self):
-        node = self.tail
-        if node != None:
-            self.unlink(node)
-        return node
-
-    def linkHead(self, node):
-        self.linkAfter(None, node)
-
-    def linkTail(self, node):
-        self.linkBefore(None, node)
-
-    def empty(self):
-        return self.head == None
-
-    def fromArray(self, array):
-        for a in array:
-            self.linkTail(DoubleNode(a))
-
-    def toArray(self):
-        result = []
-        cur = self.head
-        while cur != None:
-            result.append(cur.value)
-            cur = cur.next
-        return result
-
-class Stack:
-    def __init__(self):
-        self.list = DoublyLinkedList()
-
-    def empty(self):
-        return self.list.empty()
-
-    def push(self, value):
-        self.list.linkHead(DoubleNode(value))
-
-    def pop(self):
-        if not self.empty():
-            return self.list.unlinkHead().value
-
-class Queue:
-    def __init__(self):
-        self.list = DoublyLinkedList()
-
-    def empty(self):
-        return self.list.empty()
-
-    def push(self, value):
-        self.list.linkTail(DoubleNode(value))
-
-    def pop(self):
-        if not self.empty():
-            return self.list.unlinkHead().value
-
-def split(list):
-    fst, snd = DoublyLinkedList(), DoublyLinkedList()
-    while not list.empty():
-        fst, snd = snd, fst
-        fst.linkHead(list.unlinkTail())
-    return fst, snd
-
-def merge(fst, snd):
-    fstHead = fst.unlinkHead()
-    sndHead = snd.unlinkHead()
-
-    result = DoublyLinkedList()
-
-    while fstHead != None and sndHead != None:
-        if fstHead.value < sndHead.value:
-            result.linkTail(fstHead)
-            fstHead = fst.unlinkHead()
-        else:
-            result.linkTail(sndHead)
-            sndHead = snd.unlinkHead()
-
-    while fstHead != None:
-        result.linkTail(fstHead)
-        fstHead = fst.unlinkHead()
-
-    while sndHead != None:
-        result.linkTail(sndHead)
-        sndHead = snd.unlinkHead()
-
-    return result
-
-def mergesort(list):
-    if list.head == list.tail:
-        return list
-
-    left, right = split(list)
-    leftSorted = mergesort(left)
-    rightSorted = mergesort(right)
-    return merge(leftSorted, rightSorted)
-
-##########
-
-def fib(n):
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        return fib(n - 1) + fib(n - 2)
-
-mem = {}
-def fibMem(n):
-    if n in mem:
-        return mem[n]
-
-    r = None
-    if n <= 0:
-        r = 0
-    elif n == 1:
-        r = 1
-    else:
-        r = fibMem(n - 1) + fibMem(n - 2)
-
-    mem[n] = r
+def generateReturn(toOpen, toClose=0, str=''):
+    if toOpen == 0 and toClose == 0:
+        return [str]
+    r = []
+    if toOpen > 0:
+        r += generateReturn(toOpen - 1, toClose + 1, str + '(')
+    if toClose > 0:
+        r += generateReturn(toOpen, toClose - 1, str + ')')
     return r
+
+def generateParam(result, toOpen, toClose=0, str=''):
+    if toOpen == 0 and toClose == 0:
+        result.append(str)
+    if toOpen > 0:
+        generateParam(result, toOpen - 1, toClose + 1, str + '(')
+    if toClose > 0:
+        generateParam(result, toOpen, toClose - 1, str + ')')
+
+def hanoi(n, start, end, via):
+    if n > 0:
+        hanoi(n - 1, start, via, end)
+        print('Move', start, 'to', end)
+        hanoi(n - 1, via, end, start)
+
+def pay(amount, coins, solution=[]):
+    if amount == 0:
+        print(*solution)
+    else:
+        for c in coins:
+            if c <= amount:
+                pay(amount - c, coins, solution + [c])
+
+def payUnique(amount, coins, solution=[]):
+    if amount == 0:
+        print(*solution)
+    else:
+        for i, c in enumerate(coins):
+            if c <= amount:
+                payUnique(amount - c, coins[i:], solution + [c])
+
+def powerset(list, set=[]):
+    if len(list) == 0:
+        print(*set)
+    else:
+        head, *tail = list
+        powerset(tail, set)
+        powerset(tail, set + [head])
+
+def powersetNonrecursive(list):
+    for i in range(1 << len(list)):
+        for j in range(len(list)):
+            if (i >> j) & 1 != 0:
+                print(list[j], end=' ')
+        print()
+
+def permutations(items, result=[]):
+    if len(items) == 0:
+        print(*result)
+    else:
+        for i, v in enumerate(items):
+            newItems = items[:i] + items[i + 1:]
+            permutations(newItems, result + [v])
+
+def permutationsInPlace(items, start=0, result=None):
+    if result == None:
+        result = [None] * len(items)
+    if start == len(items):
+        print(*result)
+    else:
+        for ix in range(len(result)):
+            if result[ix] != None:
+                continue
+
+            result[ix] = items[start]
+            permutationsInPlace(items, start + 1, result)
+            result[ix] = None
+
+class TreeNode:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+def testTree(depth, cutearly=0.0):
+    if depth == 0 or random.random() < cutearly:
+        return None
+    l = testTree(depth - 1, cutearly)
+    r = testTree(depth - 1, cutearly)
+    return TreeNode(random.randint(0, 100), l, r)
+
+def printTree(node, prefix=''):
+    if node == None:
+        return
+    printTree(node.left, prefix + '    ')
+    print(prefix + str(node.value))
+    printTree(node.right, prefix + '    ')
+
+def printTreePreorder(node, prefix='    '):
+    if node == None:
+        return
+
+    print(prefix[:-4] + '+-- ' + str(node.value))
+
+    if node.left != None:
+        print(prefix + '|')
+        printTreePreorder(node.left, prefix + '|   ' if node.right != None else prefix + '    ')
+
+    if node.right != None:
+        print(prefix + '|')
+        printTreePreorder(node.right, prefix + '    ')
+
+def printTreeInorder(node, leftPrefix='    ', rightPrefix='    '):
+    if node == None:
+        return
+
+    if node.left != None:
+        printTreeInorder(node.left, leftPrefix + '    ', leftPrefix + '|   ')
+        print(leftPrefix + '|')
+
+    print(leftPrefix[:-4] + '+-- ' + str(node.value))
+
+    if node.right != None:
+        print(rightPrefix + '|')
+        printTreeInorder(node.right, rightPrefix + '|   ', rightPrefix + '    ')
