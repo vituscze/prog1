@@ -46,6 +46,8 @@ Případně si můžeme vymyslet téma vlastní. Součástí zápočtového prog
 * **Uživatelská dokumentace** - jak se s vaším programem pracuje
 * **Programátorská dokumentace** - jak váš program funguje
 
+Návod k psaní dokumentace je k nalezení [zde](https://ksvi.mff.cuni.cz/~kryl/dokumentace.htm).
+
 Zápočtový program mi pošlete mailem (vituscze *at* gmail *dot* com) a pokud
 bude vše v pořádku, tak se domluvíme na prezentaci (přes Zoom nebo osobně v labu na
 Malé Straně).
