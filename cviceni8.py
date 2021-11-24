@@ -1,5 +1,3 @@
-import random
-
 def generate(toOpen, toClose=0, str=''):
     if toOpen == 0 and toClose == 0:
         print(str)
@@ -84,51 +82,3 @@ def permutationsInPlace(items, start=0, result=None):
             result[ix] = items[start]
             permutationsInPlace(items, start + 1, result)
             result[ix] = None
-
-class TreeNode:
-    def __init__(self, value, left=None, right=None):
-        self.value = value
-        self.left = left
-        self.right = right
-
-def testTree(depth, cutearly=0.0):
-    if depth == 0 or random.random() < cutearly:
-        return None
-    l = testTree(depth - 1, cutearly)
-    r = testTree(depth - 1, cutearly)
-    return TreeNode(random.randint(0, 100), l, r)
-
-def printTree(node, prefix=''):
-    if node == None:
-        return
-    printTree(node.left, prefix + '    ')
-    print(prefix + str(node.value))
-    printTree(node.right, prefix + '    ')
-
-def printTreePreorder(node, prefix='    '):
-    if node == None:
-        return
-
-    print(prefix[:-4] + '+-- ' + str(node.value))
-
-    if node.left != None:
-        print(prefix + '|')
-        printTreePreorder(node.left, prefix + '|   ' if node.right != None else prefix + '    ')
-
-    if node.right != None:
-        print(prefix + '|')
-        printTreePreorder(node.right, prefix + '    ')
-
-def printTreeInorder(node, leftPrefix='    ', rightPrefix='    '):
-    if node == None:
-        return
-
-    if node.left != None:
-        printTreeInorder(node.left, leftPrefix + '    ', leftPrefix + '|   ')
-        print(leftPrefix + '|')
-
-    print(leftPrefix[:-4] + '+-- ' + str(node.value))
-
-    if node.right != None:
-        print(rightPrefix + '|')
-        printTreeInorder(node.right, rightPrefix + '|   ', rightPrefix + '    ')
