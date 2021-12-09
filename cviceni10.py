@@ -1,59 +1,3 @@
-class Node:
-    def __init__(self, value, left = None, right = None):
-        self.value = value
-        self.left = left
-        self.right = right
-
-def printTree(root):
-    def go(node, depth):
-        if node == None:
-            return
-
-        go(node.left, depth + 1)
-        print(' ' * 2 * depth + str(node.value))
-        go(node.right, depth + 1)
-
-    go(root, 0)
-
-def printTreePretty(root):
-    def go(node, prefix):
-        if node == None:
-            return
-
-        print(prefix[:-4] + '+-- ' + str(node.value))
-
-        if node.left != None:
-            print(prefix + '|')
-            go(node.left, prefix + '|   ' if node.right != None else prefix + '    ')
-
-        if node.right != None:
-            print(prefix + '|')
-            go(node.right, prefix + '    ')
-
-    go(root, '    ')
-
-def printTreePrettyAlt(root):
-    def go(node, leftPrefix, rightPrefix):
-        if node == None:
-            return
-
-        if node.left != None:
-            go(node.left, leftPrefix + '    ', leftPrefix + '|   ')
-            print(leftPrefix + '|')
-
-        print(leftPrefix[:-4] + '+-- ' + str(node.value))
-
-        if node.right != None:
-            print(rightPrefix + '|')
-            go(node.right, rightPrefix + '|   ', rightPrefix + '    ')
-
-    go(root, '    ', '    ')
-
-
-t = Node(6, Node(3, Node(1, Node(0), Node(2)), Node(4, None, Node(5))), Node(8, Node(7), Node(9)))
-
-##########
-
 import math
 
 class Position:
@@ -88,7 +32,7 @@ class Maze:
         self.start = start
         self.end = end
 
-    def at(self, pos):
+    def getAt(self, pos):
         return self.tiles[pos.x][pos.y]
 
     def setAt(self, pos, value):
@@ -98,7 +42,7 @@ class Maze:
         for x, line in enumerate(self.tiles):
             for y, tile in enumerate(line):
                 pos = Position(x, y)
-                if self.at(pos) > 0:
+                if self.getAt(pos) > 0:
                     self.setAt(pos, 0)
 
     def printTile(self, tile, onPath=False):
@@ -128,7 +72,7 @@ class Maze:
     def available(self, pos):
         result = []
         for candidate in self.neighbours(pos):
-            if self.at(candidate) == 0:
+            if self.getAt(candidate) == 0:
                 result.append(candidate)
         return result
 
@@ -137,7 +81,7 @@ class Maze:
         minPos = None
         found = False
         for candidate in self.neighbours(pos):
-            val = self.at(candidate)
+            val = self.getAt(candidate)
             if val > 0 and val < min:
                 min = val
                 minPos = candidate
