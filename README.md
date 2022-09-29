@@ -1,6 +1,6 @@
 # Cvičení z Programování I (NPRG030) a Algoritmizace (NPRG062)
 
-Cvičení jsou každý týden v pondělí (13:10) a v pátek (9:00).
+Cvičení jsou každý týden v v pátek (9:00 a 11:30).
 
 # Užitečné linky
 
@@ -48,6 +48,6 @@ Případně si můžeme vymyslet téma vlastní. Součástí zápočtového prog
 
 Návod k psaní dokumentace je k nalezení [zde](https://ksvi.mff.cuni.cz/~kryl/dokumentace.htm).
 
-Zápočtový program mi pošlete mailem (vituscze *at* gmail *dot* com) a pokud
+Zápočtový program mi pošlete mailem (univerzitní nebo osobní - vituscze *at* gmail *dot* com) a pokud
 bude vše v pořádku, tak se domluvíme na prezentaci (přes Zoom nebo osobně v labu na
 Malé Straně).
