@@ -1,6 +1,6 @@
 # Cvičení z Programování I (NPRG030) a Algoritmizace (NPRG062)
 
-Cvičení jsou každý týden v v pátek (9:00 a 11:30).
+Cvičení jsou každý týden v pátek (9:00 a 11:30).
 
 # Užitečné linky
 
