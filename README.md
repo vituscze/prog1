@@ -7,7 +7,7 @@ Cvičení jsou každý týden ve čtvrtek 9:00 a v pátek 9:50, obě v místnost
 * [Python](https://www.python.org/downloads/)
 * [Python tutoriál](https://docs.python.org/3/tutorial/)
 * [Python dokumentace](https://docs.python.org/3/)
-* [Visual Studio](https://visualstudio.microsoft.com/)
+* [VS Code](https://code.visualstudio.com/)
 * [ReCodEx](https://recodex.mff.cuni.cz/)
 * [ReCodEx dokumentace](https://github.com/ReCodEx/wiki/wiki/User-documentation)
 * [ReCodEx kuchařka pro nové uživatele](http://www.ms.mff.cuni.cz/ReCodEx/NewUserDoc.pdf)
