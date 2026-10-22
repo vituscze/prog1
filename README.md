@@ -18,6 +18,7 @@ Cvičení jsou každý týden ve čtvrtek 9:00 a v pátek 9:50, obě v místnost
 * [Project Euler](https://projecteuler.net/)
 * [LeetCode](https://leetcode.com/)
 * [Codewars](https://www.codewars.com/)
+* [Codeforces](https://codeforces.com/)
 
 # Zápočet
 
