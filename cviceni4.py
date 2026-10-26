@@ -129,10 +129,10 @@ def shiftInPlaceClever(x, n):
 #    zároveň to vytiskne.
 
 def factorial(n):
-    n = 1
+    r = 1
     for i in range(2, n + 1):
-        n *= i
-    print(n)
+        r *= i
+    print(r)
 
 # Tohle sice funguje, ale...
 
